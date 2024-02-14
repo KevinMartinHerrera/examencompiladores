@@ -66,11 +66,10 @@ def analizar_codigo():
     vocabulario.build()
     vocabulario.lexer.input(codigo)
     
-    # Limpiar el Treeview antes de mostrar nuevos resultados
+   
     for i in result_tree.get_children():
         result_tree.delete(i)
 
-    # Insertar los resultados en el Treeview
     for tok in vocabulario.lexer:
         pos = f"{tok.lineno}:{tok.lexpos}"
         is_reserved = "X" if tok.type in Vocabulario.palabras_reservadas.values() else ""
@@ -91,7 +90,7 @@ boton_analizar.pack(pady=5)
 frame_derecha = ttk.Frame(ventana)
 frame_derecha.grid(row=0, column=1, padx=10, pady=10, sticky="nsew")
 
-# Configuración del Treeview
+
 result_tree = ttk.Treeview(frame_derecha, columns=("Token", "Valor", "Posición", "Palabra Reservada", "IDENTIFICADOR", "NUMERO", "OPERADOR", "SÍMBOLO"), show="headings")
 result_tree.heading("Token", text="Token")
 result_tree.heading("Valor", text="Valor")
